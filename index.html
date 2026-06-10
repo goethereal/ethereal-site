@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Go Ethereal — Detroit's Premier Digital Agency</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{
+  --bg:#080808;
+  --bg2:#0f0f0f;
+  --bg3:#141414;
+  --card:#111111;
+  --border:#c9a84c22;
+  --border2:#c9a84c44;
+  --text:#f5f0e8;
+  --muted:#9a9080;
+  --gold:#c9a84c;
+  --gold-light:#e8cc80;
+  --gold-pale:#f5e6b8;
+  --gold-dim:#c9a84c18;
+}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--text);font-family:'Montserrat',sans-serif;font-size:14px;line-height:1.7;overflow-x:hidden;}
+
+/* GOLD RULE */
+.gold-rule{width:100%;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent);opacity:.5;}
+
+/* RING ROTATIONS */
+@keyframes ring-cw{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
+@keyframes ring-ccw{from{transform:rotate(0deg)}to{transform:rotate(-360deg)}}
+
+/* NAV */
+nav{display:flex;justify-content:space-between;align-items:center;padding:1.6rem 3rem;position:sticky;top:0;background:rgba(8,8,8,0.96);backdrop-filter:blur(16px);z-index:100;border-bottom:1px solid var(--border);}
+.nav-logo{display:flex;flex-direction:column;align-items:flex-start;gap:1px;}
+.nav-logo-main{font-family:'Cormorant Garamond',serif;font-weight:600;font-size:1.4rem;letter-spacing:.12em;color:var(--gold-light);text-transform:uppercase;}
+.nav-logo-sub{font-size:8px;letter-spacing:.25em;color:var(--muted);text-transform:uppercase;font-weight:400;}
+.nav-links{display:flex;gap:2.5rem;list-style:none;}
+.nav-links a{color:var(--muted);text-decoration:none;font-size:11px;letter-spacing:.15em;text-transform:uppercase;font-weight:500;transition:color .3s;}
+.nav-links a:hover{color:var(--gold);}
+.nav-cta{background:transparent;color:var(--gold);border:1px solid var(--gold);padding:.5rem 1.5rem;font-size:10px;letter-spacing:.2em;text-transform:uppercase;font-weight:500;cursor:pointer;font-family:'Montserrat',sans-serif;transition:all .3s;}
+.nav-cta:hover{background:var(--gold);color:var(--bg);}
+
+/* HERO */
+.hero{min-height:92vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:5rem 2rem;position:relative;overflow:hidden;}
+.hero-ring{position:absolute;border-radius:50%;border:1px solid var(--border);pointer-events:none;}
+.hero-ring-1{width:680px;height:680px;animation:ring-cw 32s linear infinite;}
+.hero-ring-2{width:460px;height:460px;animation:ring-ccw 22s linear infinite;}
+.hero-ring-3{width:260px;height:260px;animation:ring-cw 16s linear infinite;}
+.hero-content{position:relative;z-index:2;}
+.hero-eyebrow{font-size:9px;letter-spacing:.35em;text-transform:uppercase;color:var(--gold);margin-bottom:2.5rem;font-weight:500;display:block;}
+h1{font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(3rem,7vw,5.5rem);line-height:1.08;letter-spacing:.02em;margin-bottom:1rem;color:var(--text);}
+h1 em{font-style:italic;color:var(--gold-light);}
+.hero-divider{display:flex;align-items:center;gap:1rem;justify-content:center;margin:1.5rem 0;}
+.hero-divider-line{height:1px;width:60px;background:var(--gold);opacity:.5;}
+.hero-divider-diamond{width:5px;height:5px;background:var(--gold);transform:rotate(45deg);}
+.hero-sub{font-size:.85rem;color:var(--muted);max-width:480px;line-height:1.85;letter-spacing:.02em;margin:0 auto 3rem;}
+.hero-actions{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;}
+.btn-gold{background:var(--gold);color:var(--bg);border:none;padding:.85rem 2.5rem;font-size:10px;letter-spacing:.25em;text-transform:uppercase;font-weight:600;cursor:pointer;font-family:'Montserrat',sans-serif;transition:all .3s;}
+.btn-gold:hover{background:var(--gold-light);}
+.btn-outline{background:transparent;color:var(--text);border:1px solid var(--border2);padding:.85rem 2.5rem;font-size:10px;letter-spacing:.25em;text-transform:uppercase;font-weight:400;cursor:pointer;font-family:'Montserrat',sans-serif;transition:all .3s;}
+.btn-outline:hover{border-color:var(--gold);color:var(--gold);}
+.hero-stats{display:flex;gap:3rem;justify-content:center;margin-top:4.5rem;flex-wrap:wrap;align-items:center;}
+.stat{text-align:center;}
+.stat-val{font-family:'Cormorant Garamond',serif;font-size:2.2rem;font-weight:300;color:var(--gold-light);display:block;line-height:1;}
+.stat-label{font-size:9px;letter-spacing:.2em;color:var(--muted);text-transform:uppercase;margin-top:.4rem;display:block;}
+.stat-sep{width:1px;height:40px;background:var(--border2);}
+
+/* MARQUEE */
+.marquee-wrap{padding:.9rem 0;overflow:hidden;border-top:1px solid var(--border);border-bottom:1px solid var(--border);}
+.marquee-track{display:flex;gap:2.5rem;animation:marquee-scroll 22s linear infinite;white-space:nowrap;}
+.marquee-item{font-size:9px;color:var(--muted);letter-spacing:.25em;text-transform:uppercase;flex-shrink:0;font-weight:500;}
+.marquee-gem{color:var(--gold);font-size:8px;flex-shrink:0;}
+@keyframes marquee-scroll{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+
+/* SECTION BASE */
+.section{padding:5rem 3rem;max-width:1040px;margin:0 auto;}
+.section-eyebrow{font-size:9px;letter-spacing:.3em;color:var(--gold);text-transform:uppercase;font-weight:500;margin-bottom:1rem;display:block;}
+h2{font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(2rem,4vw,3rem);letter-spacing:.03em;line-height:1.2;margin-bottom:.75rem;}
+h2 em{font-style:italic;color:var(--gold-light);}
+.section-sub{font-size:.78rem;color:var(--muted);line-height:1.9;letter-spacing:.02em;max-width:480px;margin-bottom:0;}
+
+/* SERVICES CASCADE */
+.services-cascade{position:relative;width:100%;height:920px;margin-top:2.5rem;}
+.svc{width:300px;position:absolute;}
+.svc-num{font-family:'Cormorant Garamond',serif;font-size:5rem;font-weight:300;color:var(--border2);line-height:1;margin-bottom:.5rem;}
+.svc-rule{width:32px;height:1px;background:var(--gold);opacity:.6;margin-bottom:1.25rem;}
+.svc h3{font-family:'Cormorant Garamond',serif;font-size:1.65rem;font-weight:400;letter-spacing:.05em;margin-bottom:.65rem;color:var(--text);}
+.svc p{font-size:.76rem;color:var(--muted);line-height:1.95;margin-bottom:1.25rem;max-width:280px;}
+.svc-price-label{font-size:8px;letter-spacing:.2em;color:var(--muted);text-transform:uppercase;margin-bottom:.2rem;}
+.svc-price{font-family:'Cormorant Garamond',serif;font-size:2.4rem;font-weight:300;color:var(--gold-light);}
+.svc-price-mo{font-size:1rem;color:var(--muted);}
+.svc-price-note{font-size:8px;color:var(--muted);letter-spacing:.08em;margin-top:.15rem;}
+.svc-tags{display:flex;flex-wrap:wrap;gap:5px;margin-top:1rem;}
+.stag{font-size:8px;padding:2px 9px;border:1px solid var(--border);color:var(--muted);letter-spacing:.1em;text-transform:uppercase;}
+.svc-1{top:0;left:0;}
+.svc-2{top:282px;right:30px;}
+.svc-3{top:564px;left:40px;}
+.cascade-thread{position:absolute;left:50%;top:40px;width:1px;bottom:40px;background:linear-gradient(180deg,transparent,var(--border),transparent);pointer-events:none;transform:translateX(-50%);}
+
+/* OFFER */
+.offer-wrap{padding:0 3rem 5rem;max-width:1040px;margin:0 auto;}
+.offer{border:1px solid var(--border2);padding:3.5rem;position:relative;overflow:hidden;text-align:center;}
+.offer::after{content:'◆';position:absolute;top:-10px;left:50%;transform:translateX(-50%);color:var(--gold);font-size:18px;background:var(--bg);padding:0 .75rem;}
+.offer-badge{font-size:8px;letter-spacing:.3em;color:var(--gold);text-transform:uppercase;border:1px solid var(--border2);padding:.4rem 1rem;display:inline-block;margin-bottom:1.5rem;}
+.offer h3{font-family:'Cormorant Garamond',serif;font-size:2.5rem;font-weight:300;margin-bottom:.5rem;}
+.offer h3 em{font-style:italic;color:var(--gold-light);}
+.offer p{font-size:.8rem;color:var(--muted);margin-bottom:2rem;line-height:1.9;max-width:520px;margin-left:auto;margin-right:auto;}
+.offer-items{display:flex;justify-content:center;gap:2px;flex-wrap:wrap;margin-bottom:2.5rem;}
+.offer-item{background:var(--bg2);border:1px solid var(--border);padding:.85rem 1.5rem;text-align:center;}
+.offer-item-name{font-size:.78rem;color:var(--text);letter-spacing:.05em;}
+.offer-item-val{font-size:9px;color:var(--muted);letter-spacing:.1em;margin-top:.2rem;}
+
+/* PROCESS */
+.process{display:flex;flex-direction:column;margin-top:1rem;}
+.process-item{display:grid;grid-template-columns:80px 1fr;gap:2rem;padding:2.5rem 0;border-bottom:1px solid var(--border);align-items:start;}
+.process-item:last-child{border-bottom:none;}
+.process-num{font-family:'Cormorant Garamond',serif;font-size:3.5rem;font-weight:300;color:var(--border2);line-height:1;text-align:right;}
+.process-body h4{font-family:'Cormorant Garamond',serif;font-size:1.25rem;font-weight:400;letter-spacing:.05em;margin-bottom:.5rem;color:var(--text);}
+.process-body p{font-size:.78rem;color:var(--muted);line-height:1.9;}
+
+/* WHY */
+.why-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--border);margin-top:1rem;}
+.why-item{background:var(--card);padding:2.5rem;text-align:center;}
+.why-gem{color:var(--gold);font-size:.9rem;margin-bottom:1rem;display:block;}
+.why-item h4{font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:400;letter-spacing:.05em;margin-bottom:.5rem;}
+.why-item p{font-size:.75rem;color:var(--muted);line-height:1.8;}
+
+/* CTA */
+.cta-wrap{padding:5rem 3rem 6rem;max-width:620px;margin:0 auto;text-align:center;}
+.cta-wrap h2{margin-bottom:.75rem;}
+.cta-wrap .section-sub{margin:0 auto 2.5rem;}
+.cta-form{display:flex;flex-direction:column;gap:8px;text-align:left;}
+.cta-form input,.cta-form select{background:var(--bg2);border:1px solid var(--border2);padding:.8rem 1rem;color:var(--text);font-size:.78rem;font-family:'Montserrat',sans-serif;letter-spacing:.04em;outline:none;transition:border-color .3s;width:100%;}
+.cta-form input::placeholder{color:var(--muted);}
+.cta-form input:focus,.cta-form select:focus{border-color:var(--gold);}
+.cta-form select{color:var(--muted);}
+.cta-form select option{background:var(--bg);}
+.cta-form button{background:var(--gold);color:var(--bg);border:none;padding:.9rem;font-size:9px;letter-spacing:.3em;text-transform:uppercase;font-weight:600;cursor:pointer;font-family:'Montserrat',sans-serif;margin-top:.5rem;transition:background .3s;width:100%;}
+.cta-form button:hover{background:var(--gold-light);}
+.cta-note{font-size:.7rem;color:var(--muted);letter-spacing:.05em;margin-top:1rem;text-align:center;}
+
+/* FOOTER */
+footer{border-top:1px solid var(--border);padding:2rem 3rem;}
+.footer-inner{display:flex;justify-content:space-between;align-items:center;max-width:1040px;margin:0 auto;flex-wrap:wrap;gap:1rem;}
+.footer-logo{font-family:'Cormorant Garamond',serif;font-size:1.1rem;letter-spacing:.15em;color:var(--gold);text-transform:uppercase;}
+.footer-email{font-size:.7rem;color:var(--gold);letter-spacing:.08em;}
+.footer-copy{font-size:.7rem;color:var(--muted);letter-spacing:.1em;}
+
+/* RESPONSIVE */
+@media(max-width:768px){
+  nav{padding:1.2rem 1.5rem;}
+  .nav-links{display:none;}
+  .hero{padding:4rem 1.5rem;}
+  .hero-ring-1{width:340px;height:340px;}
+  .hero-ring-2{width:230px;height:230px;}
+  .hero-ring-3{width:130px;height:130px;}
+  .section{padding:3.5rem 1.5rem;}
+  .offer-wrap{padding:0 1.5rem 3.5rem;}
+  .services-cascade{height:auto;display:flex;flex-direction:column;gap:3rem;}
+  .svc{position:static;width:100%;}
+  .cascade-thread{display:none;}
+  .cta-wrap{padding:3.5rem 1.5rem 4rem;}
+  footer{padding:1.5rem;}
+  .hero-stats{gap:1.5rem;}
+  .stat-sep{display:none;}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">
+    <span class="nav-logo-main">Go Ethereal</span>
+    <span class="nav-logo-sub">Digital Agency · Detroit</span>
+  </div>
+  <ul class="nav-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#process">Process</a></li>
+    <li><a href="#contact">Pricing</a></li>
+  </ul>
+  <button class="nav-cta" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Enquire</button>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-ring hero-ring-1"></div>
+  <div class="hero-ring hero-ring-2"></div>
+  <div class="hero-ring hero-ring-3"></div>
+  <div class="hero-content">
+    <span class="hero-eyebrow">Detroit's Premier Digital Agency</span>
+    <h1>Elevate your business.<br><em>Be in Control.</em></h1>
+    <div class="hero-divider">
+      <div class="hero-divider-line"></div>
+      <div class="hero-divider-diamond"></div>
+      <div class="hero-divider-line"></div>
+    </div>
+    <p class="hero-sub">We craft bespoke websites, intelligent chatbots, and precision ad campaigns for local businesses that refuse to settle for ordinary.</p>
+    <div class="hero-actions">
+      <button class="btn-gold" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Begin your journey</button>
+      <button class="btn-outline" onclick="document.getElementById('services').scrollIntoView({behavior:'smooth'})">Explore services</button>
+    </div>
+    <div class="hero-stats">
+      <div class="stat">
+        <span class="stat-val">2wk</span>
+        <span class="stat-label">Delivery</span>
+      </div>
+      <div class="stat-sep"></div>
+      <div class="stat">
+        <span class="stat-val">3</span>
+        <span class="stat-label">Core services</span>
+      </div>
+      <div class="stat-sep"></div>
+      <div class="stat">
+        <span class="stat-val">$997</span>
+        <span class="stat-label">Starting from</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee-wrap">
+  <div class="marquee-track">
+    <span class="marquee-item">Bespoke Websites</span><span class="marquee-gem">◆</span>
+    <span class="marquee-item">AI Chatbots</span><span class="marquee-gem">◆</span>
+    <span class="marquee-item">Google Ads</span><span class="marquee-gem">◆</span>
+    <span class="marquee-item">Meta Campaigns</span><span class="marquee-gem">◆</span>
+    <span class="marquee-item">Custom Domains</span><span class="marquee-gem">◆</span>
+    <span class="marquee-item">Business Email</span><span class="marquee-gem">◆</span>
+    <span class="marquee-item">Local SEO</span><span class="marquee-gem">◆</span>
+    <span class="marquee-item">Lead Generation</span><span class="marquee-gem">◆</span>
+    <span class="marquee-item">Bespoke Websites</span><span class="marquee-gem">◆</span>
+    <span class="marquee-item">AI Chatbots</span><span class="marquee-gem">◆</span>
+    <span class="marquee-item">Google Ads</span><span class="marquee-gem">◆</span>
+    <span class="marquee-item">Meta Campaigns</span><span class="marquee-gem">◆</span>
+    <span class="marquee-item">Custom Domains</span><span class="marquee-gem">◆</span>
+    <span class="marquee-item">Business Email</span><span class="marquee-gem">◆</span>
+    <span class="marquee-item">Local SEO</span><span class="marquee-gem">◆</span>
+    <span class="marquee-item">Lead Generation</span><span class="marquee-gem">◆</span>
+  </div>
+</div>
+
+<!-- SERVICES -->
+<div class="section" id="services">
+  <span class="section-eyebrow">What we offer</span>
+  <h2>Three services.<br><em>Infinite impact.</em></h2>
+  <p class="section-sub">Each service crafted to bring the right customers to your door — and keep them there.</p>
+  <div class="services-cascade">
+    <div class="cascade-thread"></div>
+    <div class="svc svc-1">
+      <div class="svc-num">I</div>
+      <div class="svc-rule"></div>
+      <h3>Bespoke Website</h3>
+      <p>A refined digital presence built on your own domain — with professional email, SSL security, mobile perfection, and SEO woven into every page.</p>
+      <div class="svc-price-label">Starting from</div>
+      <div class="svc-price">$997</div>
+      <div class="svc-price-note">One-time investment · Live in 2 weeks</div>
+      <div class="svc-tags">
+        <span class="stag">Custom domain</span>
+        <span class="stag">Business email</span>
+        <span class="stag">SEO</span>
+        <span class="stag">Analytics</span>
+      </div>
+    </div>
+    <div class="svc svc-2">
+      <div class="svc-num">II</div>
+      <div class="svc-rule"></div>
+      <h3>AI Chatbot</h3>
+      <p>An intelligent assistant working around the clock — answering enquiries, capturing leads, and booking appointments while you focus on what you do best.</p>
+      <div class="svc-price-label">Starting from</div>
+      <div class="svc-price">$597</div>
+      <div class="svc-price-note">One-time setup · Ready in 5 days</div>
+      <div class="svc-tags">
+        <span class="stag">24/7 active</span>
+        <span class="stag">Lead capture</span>
+        <span class="stag">Bookings</span>
+      </div>
+    </div>
+    <div class="svc svc-3">
+      <div class="svc-num">III</div>
+      <div class="svc-rule"></div>
+      <h3>Paid Advertising</h3>
+      <p>Precision campaigns on Google and Meta reaching your exact customer in Detroit — with monthly reporting so every dollar is accounted for.</p>
+      <div class="svc-price-label">Starting from</div>
+      <div class="svc-price">$497<span class="svc-price-mo"> /mo</span></div>
+      <div class="svc-price-note">Google · Meta · Monthly reports</div>
+      <div class="svc-tags">
+        <span class="stag">Google Ads</span>
+        <span class="stag">Meta Ads</span>
+        <span class="stag">Reporting</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FOUNDER OFFER -->
+<div class="offer-wrap">
+  <div class="offer">
+    <div class="offer-badge">Founder's Collection — Limited Availability</div>
+    <h3>The complete suite<br><em>for $1,797</em></h3>
+    <p>Website, chatbot, and your first month of ad management — reserved exclusively for our founding clients while we establish our portfolio in Detroit.</p>
+    <div class="offer-items">
+      <div class="offer-item">
+        <div class="offer-item-name">Bespoke Website</div>
+        <div class="offer-item-val">$997 value</div>
+      </div>
+      <div class="offer-item">
+        <div class="offer-item-name">AI Chatbot</div>
+        <div class="offer-item-val">$597 value</div>
+      </div>
+      <div class="offer-item">
+        <div class="offer-item-name">Ads Management</div>
+        <div class="offer-item-val">$497 value</div>
+      </div>
+    </div>
+    <button class="btn-gold" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Secure your spot</button>
+  </div>
+</div>
+
+<!-- PROCESS -->
+<div class="section" id="process">
+  <span class="section-eyebrow">Our process</span>
+  <h2>Refined from<br><em>start to finish.</em></h2>
+  <p class="section-sub">No confusion, no delays, no surprises. Just a clear path from conversation to launch.</p>
+  <div class="process">
+    <div class="process-item">
+      <div class="process-num">01</div>
+      <div class="process-body">
+        <h4>A conversation about your vision</h4>
+        <p>A complimentary 20-minute call to understand your business, your customers, and your goals. We recommend exactly what you need — nothing superfluous.</p>
+      </div>
+    </div>
+    <div class="process-item">
+      <div class="process-num">02</div>
+      <div class="process-body">
+        <h4>We craft it in two weeks</h4>
+        <p>You receive a private preview before anything is published. Two rounds of refinements included. We handle every technical detail — domain, hosting, email — so you never have to.</p>
+      </div>
+    </div>
+    <div class="process-item">
+      <div class="process-num">03</div>
+      <div class="process-body">
+        <h4>You launch and grow</h4>
+        <p>We go live together on a call, walk you through your new presence, and deliver a 30-day performance report with real numbers — not vanity metrics.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- WHY US -->
+<div class="section" style="padding-top:0">
+  <span class="section-eyebrow">Why choose us</span>
+  <h2>A different kind<br>of <em>agency.</em></h2>
+  <p class="section-sub">We are lean by design. No layers, no delays — just exceptional work delivered with care.</p>
+  <div class="why-grid">
+    <div class="why-item">
+      <span class="why-gem">◆</span>
+      <h4>Two-week delivery</h4>
+      <p>Most agencies take months. We move with precision and purpose.</p>
+    </div>
+    <div class="why-item">
+      <span class="why-gem">◆</span>
+      <h4>Detroit roots</h4>
+      <p>We are a local business serving local businesses. This city is our home.</p>
+    </div>
+    <div class="why-item">
+      <span class="why-gem">◆</span>
+      <h4>Direct access</h4>
+      <p>You speak to the person doing the work. Always. No account managers.</p>
+    </div>
+    <div class="why-item">
+      <span class="why-gem">◆</span>
+      <h4>You own it all</h4>
+      <p>Your domain, your site, your accounts — ours to build, yours to keep.</p>
+    </div>
+  </div>
+</div>
+
+<!-- CONTACT -->
+<div class="cta-wrap" id="contact">
+  <span class="section-eyebrow">Begin</span>
+  <h2>Ready to be<br><em>exceptional?</em></h2>
+  <p class="section-sub">Tell us about your business. We will reach out within 24 hours to arrange a complimentary consultation.</p>
+  <div class="cta-form">
+    <input type="text" placeholder="Your name">
+    <input type="text" placeholder="Business name">
+    <input type="email" placeholder="Email address">
+    <input type="tel" placeholder="Phone number">
+    <select>
+      <option value="" disabled selected>What interests you?</option>
+      <option>Bespoke website</option>
+      <option>AI chatbot</option>
+      <option>Paid advertising</option>
+      <option>The complete suite</option>
+      <option>I'm not sure yet</option>
+    </select>
+    <button type="submit">Request a consultation →</button>
+  </div>
+  <p class="cta-note">Complimentary. Confidential. No obligation whatsoever.</p>
+</div>
+
+<!-- FOOTER -->
+<div class="gold-rule"></div>
+<footer>
+  <div class="footer-inner">
+    <div class="footer-logo">Go Ethereal</div>
+    <div class="footer-email">hello@goethereal.it.com</div>
+    <div class="footer-copy">Detroit, MI · © 2025 Ethereal</div>
+  </div>
+</footer>
+
+</body>
+</html>
