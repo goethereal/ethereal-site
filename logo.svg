@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 280" width="800" height="280">
+  <defs>
+    <linearGradient id="goldRule" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#c9a84c" stop-opacity="0"/>
+      <stop offset="50%" stop-color="#c9a84c" stop-opacity="0.8"/>
+      <stop offset="100%" stop-color="#c9a84c" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+
+  <rect x="0" y="0" width="800" height="280" fill="#080808"/>
+
+  <line x1="180" y1="50" x2="620" y2="50" stroke="url(#goldRule)" stroke-width="1"/>
+
+  <text x="400" y="148" text-anchor="middle"
+        font-family="'Cormorant Garamond', Georgia, serif"
+        font-weight="300" font-size="68" letter-spacing="18"
+        fill="#e8cc80">ETHEREAL</text>
+
+  <text x="400" y="196" text-anchor="middle"
+        font-family="'Montserrat', Arial, sans-serif"
+        font-weight="500" font-size="13" letter-spacing="6"
+        fill="#c9a84c">&#9670;&#160;&#160;DIGITAL AGENCY &#183; DETROIT&#160;&#160;&#9670;</text>
+
+  <line x1="180" y1="230" x2="620" y2="230" stroke="url(#goldRule)" stroke-width="1"/>
+</svg>
