@@ -587,13 +587,19 @@ footer{border-top:1px solid var(--border);padding:2rem 3rem;}
   form.addEventListener('submit',function(e){
     e.preventDefault();
     error.classList.remove('show');
-    var data=new FormData(form);
+    var formData=new FormData(form);
+    var object={};
+    formData.forEach(function(value,key){ object[key]=value; });
     fetch(form.action,{
       method:'POST',
-      body:data,
-      headers:{'Accept':'application/json'}
-    }).then(function(response){
-      if(response.ok){
+      headers:{
+        'Content-Type':'application/json',
+        'Accept':'application/json'
+      },
+      body:JSON.stringify(object)
+    }).then(function(response){ return response.json(); })
+    .then(function(result){
+      if(result.success){
         form.style.display='none';
         success.classList.add('show');
       } else {
